@@ -21,7 +21,53 @@
 </center>
   <p id="format">°C<p>
 </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script>
+  var  first  =  "https://fcc-weather-api.glitch.me/api/current?" ;
+var  saniye  =  ""
+var  api  =  birinci  +  ikinci ;
+
+var  x  =  belge . getElementById ( "konum" ) ;
+var  değişiklik  =  belge . getElementById ( "biçim" ) ;
+
+eğer  ( navigator . geolocation ) {
+       gezgin . coğrafi konum . getCurrentPosition ( function  ( position )  {
+    api  =  "https://fcc-weather-api.glitch.me/api/current?"  +  "lat ="  +  konum . koordinatlar . enlem  +  "& lon ="  +  konum . koordinatlar . boylam ;
+     konsol . günlük ( api ) ;
+$ . getJSON ( api ,  işlev ( json )  {
+  $ ( "#icon" ) . attr ( "src" , json . hava durumu [ 0 ] . simge ) ;
+  $ ( "# mevcut" ) . html ( Math . zemin ( json . Ana . geçici * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "# yüksek" ) . html ( Math . zemin ( json . Ana . temp_max * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "#düşük" ) . html ( Math . zemin ( json . Ana . temp_min * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "#konum" ) . html ( json . adı ) ;
+  
+} ) ;
+} )
+
+}
+  else  { 
+    alert ( "bu hava durumu kitabı kullanmak için tarayıcınızı yükseltin" ) ;
+       }
+var  cel  =  false ;
+   
+  $ ( "#format" ) . click ( function ( ) {
+   if  ( cel  ==  false ) {
+   $ . getJSON ( api ,  function ( json )  {  $ ( "#current" ) . html ( Math . floor ( json . main . temp )  +  "° C" ) ;
+  $ ( "# yüksek" ) . html ( Math . zemin ( json . Ana . temp_max )  +  "° C" ) ;
+  $ ( "#düşük" ) . html ( Math . zemin ( json . Ana . temp_min )  +  "° C" ) ;
+  $ ( "#format" ) . html ( "° F" ) ;
+  cel  =  true ;
+    } )
+   }
+    else {
+ $ . getJSON ( api ,  işlev ( json )  {
+ $ ( "# mevcut" ) . html ( Math . zemin ( json . Ana . geçici * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "# yüksek" ) . html ( Math . zemin ( json . Ana . temp_max * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "#düşük" ) . html ( Math . zemin ( json . Ana . temp_min * 1.8  +  32 )  +  "° F" ) ;
+  $ ( "#format" ) . html ( "° C" ) 
+    cel  =  false ;
+      } )
+    }
+    } )</script
 </body>
 </html>
 <!--
